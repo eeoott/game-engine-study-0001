@@ -205,7 +205,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			int width = static_cast<int>(rtSize.width);
 			int height = static_cast<int>(rtSize.height);
 
-			for (int x = 0; x < width; x += 10)
+			for (int x = 0; x < width; x += 20)
 			{
 				pRenderTarget->DrawLine(
 					D2D1::Point2F(static_cast<FLOAT>(x), 0.0f),
@@ -215,7 +215,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 				);
 			}
 
-			for (int y = 0; y < height; y += 10)
+			for (int y = 0; y < height; y += 20)
 			{
 				pRenderTarget->DrawLine(
 					D2D1::Point2F(0.0f, static_cast<FLOAT>(y)),
