@@ -33,7 +33,7 @@ ID3D11Buffer * g_pVBuffer = nullptr;              // Vertex Buffer
 struct VERTEX {
 	XMFLOAT3    Position;
 	XMFLOAT4    Color;
-	
+
 };
 
 
@@ -51,47 +51,47 @@ inline void SafeRelease(T **ppInterfaceToRelease)
 void CreateRenderTarget() {
 	HRESULT hr;
 	ID3D11Texture2D * pBackBuffer;
-	
-	    // Get a pointer to the back buffer
-	g_pSwapchain->GetBuffer(0, __uuidof(ID3D11Texture2D),(LPVOID*)&pBackBuffer);
-	
+
+	// Get a pointer to the back buffer
+	g_pSwapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
+
 	// Create a render-target view
-	g_pDev->CreateRenderTargetView(pBackBuffer, NULL,&g_pRTView);
+	g_pDev->CreateRenderTargetView(pBackBuffer, NULL, &g_pRTView);
 	pBackBuffer->Release();
-	
-	    // Bind the view
+
+	// Bind the view
 	g_pDevcon->OMSetRenderTargets(1, &g_pRTView, NULL);
-	
+
 }
 
 void SetViewPort() {
 	D3D11_VIEWPORT viewport;
 	ZeroMemory(&viewport, sizeof(D3D11_VIEWPORT));
-	
+
 	viewport.TopLeftX = 0;
 	viewport.TopLeftY = 0;
 	viewport.Width = SCREEN_WIDTH;
 	viewport.Height = SCREEN_HEIGHT;
-	
+
 	g_pDevcon->RSSetViewports(1, &viewport);
 }
 
 void InitPipeline() {
-	    // load and compile the two shaders
+	// load and compile the two shaders
 	ID3DBlob * VS, *PS;
-	
+
 	D3DReadFileToBlob(L"copy.vso", &VS);
 	D3DReadFileToBlob(L"copy.pso", &PS);
-	
-	    // encapsulate both shaders into shader objects
+
+	// encapsulate both shaders into shader objects
 	g_pDev->CreateVertexShader(VS->GetBufferPointer(), VS->GetBufferSize(), NULL, &g_pVS);
 	g_pDev->CreatePixelShader(PS->GetBufferPointer(), PS->GetBufferSize(), NULL, &g_pPS);
-	
-	    // set the shader objects
+
+	// set the shader objects
 	g_pDevcon->VSSetShader(g_pVS, 0, 0);
 	g_pDevcon->PSSetShader(g_pPS, 0, 0);
-	
-		    // create the input layout object
+
+	// create the input layout object
 	D3D11_INPUT_ELEMENT_DESC ied[] =
 	{
 		{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
@@ -103,12 +103,12 @@ void InitPipeline() {
 
 	VS->Release();
 	PS->Release();
-	
+
 }
 
 // this is the function that creates the shape to render
 void InitGraphics() {
-	    // create a triangle using the VERTEX struct
+	// create a triangle using the VERTEX struct
 	VERTEX OurVertices[] =
 	{
 	{XMFLOAT3(0.0f, 0.5f, 0.0f), XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f)},
@@ -124,43 +124,21 @@ void InitGraphics() {
 	bd.ByteWidth = sizeof(VERTEX) * 3;             // size is the VERTEX struct * 3
 	bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;       // use as a vertex buffer
 	bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;    // allow CPU to write in buffer
-	
+
 	g_pDev->CreateBuffer(&bd, NULL, &g_pVBuffer);       // create the buffer
-	
-	    // copy the vertices into the buffer
+
+		// copy the vertices into the buffer
 	D3D11_MAPPED_SUBRESOURCE ms;
 	g_pDevcon->Map(g_pVBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);    // map the buffer
 	memcpy(ms.pData, OurVertices, sizeof(VERTEX) * 3);                       // copy the data
 	g_pDevcon->Unmap(g_pVBuffer, NULL);                                      // unmap the buffer
-	
+
 }
 
 // this function prepare graphic resources for use
 HRESULT CreateGraphicsResources(HWND hWnd)
 {
 	HRESULT hr = S_OK;
-	//if (pRenderTarget == nullptr)
-	//{
-	//	RECT rc;
-	//	GetClientRect(hWnd, &rc);
-
-	//	D2D1_SIZE_U size = D2D1::SizeU(rc.right - rc.left,
-	//		rc.bottom - rc.top);
-
-	//	hr = pFactory->CreateHwndRenderTarget(
-	//		D2D1::RenderTargetProperties(),
-	//		D2D1::HwndRenderTargetProperties(hWnd, size),
-	//		&pRenderTarget);
-
-	//	if (SUCCEEDED(hr))
-	//	{
-	//		hr = pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::LightSlateGray), &pLightSlateGrayBrush);
-
-	//	}
-
-	//	if (SUCCEEDED(hr))
-	//	{
-	//		hr = pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::CornflowerBlue), &pCornflowerBlueBrush);
 	if (g_pSwapchain == nullptr)
 	{
 		// create a struct to hold information about the swap chain
@@ -235,9 +213,6 @@ HRESULT CreateGraphicsResources(HWND hWnd)
 
 void DiscardGraphicsResources()
 {
-	/*SafeRelease(&pRenderTarget);
-	SafeRelease(&pLightSlateGrayBrush);
-	SafeRelease(&pCornflowerBlueBrush);*/
 	SafeRelease(&g_pLayout);
 	SafeRelease(&g_pVS);
 	SafeRelease(&g_pPS);
@@ -394,108 +369,15 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 		break;
 
 	case WM_PAINT:
-	//{
-	//	//	PAINTSTRUCT ps;
-	//	//	HDC hdc = BeginPaint(hWnd, &ps);
-	//	//	RECT rec = { 20, 20, 60, 80 };
-	//	//	HBRUSH brush = (HBRUSH)GetStockObject(BLACK_BRUSH);
 
-	//	//	FillRect(hdc, &rec, brush);
-
-	//	//	EndPaint(hWnd, &ps);
-	//	//} break;
-	//	//// this message is read when the window is closed
-	//	//case WM_DESTROY:
-	//	//{
-	//	//	// close the application entirely
-	//	//	PostQuitMessage(0);
-	//	//	return 0;
-	//	//} break;
-	//	HRESULT hr = CreateGraphicsResources(hWnd);
-	//	if (SUCCEEDED(hr))
-	//	{
-	//		PAINTSTRUCT ps;
-	//		BeginPaint(hWnd, &ps);
-
-	//		// start build GPU draw command
-	//		pRenderTarget->BeginDraw();
-
-	//		// clear the background with white color
-	//		pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::White));
-
-	//		// retrieve the size of drawing area
-	//		D2D1_SIZE_F rtSize = pRenderTarget->GetSize();
-
-	//		// draw a grid background.
-	//		int width = static_cast<int>(rtSize.width);
-	//		int height = static_cast<int>(rtSize.height);
-
-	//		for (int x = 0; x < width; x += 20)
-	//		{
-	//			pRenderTarget->DrawLine(
-	//				D2D1::Point2F(static_cast<FLOAT>(x), 0.0f),
-	//				D2D1::Point2F(static_cast<FLOAT>(x), rtSize.height),
-	//				pLightSlateGrayBrush,
-	//				0.5f
-	//			);
-	//		}
-
-	//		for (int y = 0; y < height; y += 20)
-	//		{
-	//			pRenderTarget->DrawLine(
-	//				D2D1::Point2F(0.0f, static_cast<FLOAT>(y)),
-	//				D2D1::Point2F(rtSize.width, static_cast<FLOAT>(y)),
-	//				pLightSlateGrayBrush,
-	//				0.5f
-	//			);
-	//		}
-
-	//		// draw two rectangles
-	//		D2D1_RECT_F rectangle1 = D2D1::RectF(
-	//			rtSize.width / 2 - 50.0f,
-	//			rtSize.height / 2 - 50.0f,
-	//			rtSize.width / 2 + 50.0f,
-	//			rtSize.height / 2 + 50.0f
-	//		);
-
-	//		D2D1_RECT_F rectangle2 = D2D1::RectF(
-	//			rtSize.width / 2 - 100.0f,
-	//			rtSize.height / 2 - 100.0f,
-	//			rtSize.width / 2 + 100.0f,
-	//			rtSize.height / 2 + 100.0f
-	//		);
-
-	//		// draw a filled rectangle
-	//		pRenderTarget->FillRectangle(&rectangle1, pLightSlateGrayBrush);
-
-	//		// draw a outline only rectangle
-	//		pRenderTarget->DrawRectangle(&rectangle2, pCornflowerBlueBrush);
-
-	//		// end GPU draw command building
-	//		hr = pRenderTarget->EndDraw();
-	//		if (FAILED(hr) || hr == D2DERR_RECREATE_TARGET)
-	//		{
-	//			DiscardGraphicsResources();
-	//		}
-
-	//		EndPaint(hWnd, &ps);
-	//	}
-	//}
-	result = CreateGraphicsResources(hWnd);
-	RenderFrame();
-	wasHandled = true;
-	break;
+		result = CreateGraphicsResources(hWnd);
+		RenderFrame();
+		wasHandled = true;
+		break;
 
 	case WM_SIZE:
-		//if (pRenderTarget != nullptr)
 		if (g_pSwapchain != nullptr)
 		{
-		/*	RECT rc;
-			GetClientRect(hWnd, &rc);
-
-			D2D1_SIZE_U size = D2D1::SizeU(rc.right - rc.left, rc.bottom - rc.top);
-
-			pRenderTarget->Resize(size);*/
 			DiscardGraphicsResources();
 		}
 		wasHandled = true;
