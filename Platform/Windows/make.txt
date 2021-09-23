@@ -6,6 +6,6 @@ clang-cl -I./DirectXMath/Inc -c -Z7 -o helloengine_d3d.obj helloengine_d3d.cpp
 
 clang -I./DirectXMath/Inc -l user32.lib -l d3d11.lib -l d3dcompiler.lib -o helloengine_d3d.exe helloengine_d3d.cpp
 
-
+cl /EHsc helloengine_d3d12.cpp user32.lib d3d12.lib dxgi.lib d3dcompiler.lib
 link -debug user32.lib d3d11.lib d3dcompiler.lib helloengine_d3d.obj
 
