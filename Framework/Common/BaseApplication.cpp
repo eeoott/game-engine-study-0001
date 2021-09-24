@@ -1,10 +1,23 @@
 #include "BaseApplication.hpp"
+#include <iostream>
+
+using namespace My;
+
+bool My::BaseApplication::m_bQuit = false;
+
+My::BaseApplication::BaseApplication(GfxConfiguration& cfg)
+    : m_Config(cfg)
+{
+
+}
+
 
 int My::BaseApplication::Initialize()
 {
-	m_bQuit = false;
+    //m_bQuit = false;
+    std::cout << m_Config;
 
-	return 0;
+    return 0;
 }
 
 void My::BaseApplication::Finalize()
@@ -19,5 +32,5 @@ void My::BaseApplication::Tick()
 
 bool My::BaseApplication::IsQuit()
 {
-	return m_bQuit;
+    return m_bQuit;
 }

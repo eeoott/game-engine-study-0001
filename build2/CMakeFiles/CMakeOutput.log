@@ -1,0 +1,119 @@
+The system is: Windows - 10.0.19043 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: E:/game-sdk/LLVM/bin/clang-cl.exe 
+Build flags: -Wall
+Id flags:  
+
+The output was:
+0
+CMakeCCompilerId.c(419,13): warning: no previous extern declaration for non-static variable 'info_compiler' [-Wmissing-variable-declarations]
+char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+            ^
+CMakeCCompilerId.c(419,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+^
+CMakeCCompilerId.c(421,13): warning: no previous extern declaration for non-static variable 'info_simulate' [-Wmissing-variable-declarations]
+char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
+            ^
+CMakeCCompilerId.c(421,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
+^
+CMakeCCompilerId.c(699,12): warning: no previous extern declaration for non-static variable 'info_version' [-Wmissing-variable-declarations]
+char const info_version[] = {
+           ^
+CMakeCCompilerId.c(699,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const info_version[] = {
+^
+CMakeCCompilerId.c(728,12): warning: no previous extern declaration for non-static variable 'info_simulate_version' [-Wmissing-variable-declarations]
+char const info_simulate_version[] = {
+           ^
+CMakeCCompilerId.c(728,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const info_simulate_version[] = {
+^
+CMakeCCompilerId.c(748,13): warning: no previous extern declaration for non-static variable 'info_platform' [-Wmissing-variable-declarations]
+char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+            ^
+CMakeCCompilerId.c(748,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+^
+CMakeCCompilerId.c(749,13): warning: no previous extern declaration for non-static variable 'info_arch' [-Wmissing-variable-declarations]
+char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+            ^
+CMakeCCompilerId.c(749,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+^
+CMakeCCompilerId.c(770,13): warning: no previous extern declaration for non-static variable 'info_language_dialect_default' [-Wmissing-variable-declarations]
+const char* info_language_dialect_default =
+            ^
+CMakeCCompilerId.c(770,7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const char* info_language_dialect_default =
+      ^
+CMakeCCompilerId.c(433,9): warning: macro is not used [-Wunused-macros]
+#define STRINGIFY(X) STRINGIFY_HELPER(X)
+        ^
+CMakeCCompilerId.c(432,9): warning: macro is not used [-Wunused-macros]
+#define STRINGIFY_HELPER(X) #X
+        ^
+CMakeCCompilerId.c(683,9): warning: macro is not used [-Wunused-macros]
+#define HEX(n)             \
+        ^
+10 warnings generated.
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+The C compiler identification is Clang, found in "E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/3.21.2/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: E:/game-sdk/LLVM/bin/clang-cl.exe 
+Build flags: -Wall;-Xclang;-std=gnu++14
+Id flags:  
+
+The output was:
+0
+CMakeCXXCompilerId.cpp(404,13): warning: no previous extern declaration for non-static variable 'info_compiler' [-Wmissing-variable-declarations]
+char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+            ^
+CMakeCXXCompilerId.cpp(404,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+^
+CMakeCXXCompilerId.cpp(406,13): warning: no previous extern declaration for non-static variable 'info_simulate' [-Wmissing-variable-declarations]
+char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
+            ^
+CMakeCXXCompilerId.cpp(406,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
+^
+CMakeCXXCompilerId.cpp(733,13): warning: no previous extern declaration for non-static variable 'info_platform' [-Wmissing-variable-declarations]
+char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+            ^
+CMakeCXXCompilerId.cpp(733,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+^
+CMakeCXXCompilerId.cpp(734,13): warning: no previous extern declaration for non-static variable 'info_arch' [-Wmissing-variable-declarations]
+char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+            ^
+CMakeCXXCompilerId.cpp(734,1): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+^
+CMakeCXXCompilerId.cpp(754,13): warning: no previous extern declaration for non-static variable 'info_language_dialect_default' [-Wmissing-variable-declarations]
+const char* info_language_dialect_default = "INFO" ":" "dialect_default["
+            ^
+CMakeCXXCompilerId.cpp(754,7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const char* info_language_dialect_default = "INFO" ":" "dialect_default["
+      ^
+CMakeCXXCompilerId.cpp(418,9): warning: macro is not used [-Wunused-macros]
+#define STRINGIFY(X) STRINGIFY_HELPER(X)
+        ^
+CMakeCXXCompilerId.cpp(417,9): warning: macro is not used [-Wunused-macros]
+#define STRINGIFY_HELPER(X) #X
+        ^
+CMakeCXXCompilerId.cpp(668,9): warning: macro is not used [-Wunused-macros]
+#define HEX(n)             \
+        ^
+8 warnings generated.
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+The CXX compiler identification is Clang, found in "E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/3.21.2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+

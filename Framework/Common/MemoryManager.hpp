@@ -9,8 +9,9 @@ namespace My {
             template<typename T, typename... Arguments>
             T* New(Arguments... parameters)
             {
-                return new (Allocator(sizeof(T))) T(paramenters...);
+                return new (Allocate(sizeof(T))) T(parameters...);
             }
+
             template<typename T>
             void Delete(T* p)
             {
@@ -20,16 +21,18 @@ namespace My {
 
         public:
             virtual ~MemoryManager() {}
+
             virtual int Initialize();
             virtual void Finalize();
             virtual void Tick();
 
             void* Allocate(size_t size);
-            void Free(void* p, size_t size);
-        private :
-            static size_t* m_pBlockSizeLookup;
-            static Allocator* m_pAllocators;
+            void  Free(void* p, size_t size);
         private:
-            static Allocator* LookupAllocator(size_t size);
+            static size_t*        m_pBlockSizeLookup;
+            static Allocator*     m_pAllocators;
+        private:
+            static Allocator* LookUpAllocator(size_t size);
     };
 }
+

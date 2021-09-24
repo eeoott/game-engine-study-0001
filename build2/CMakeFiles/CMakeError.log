@@ -1,0 +1,59 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_a091f/fast && C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_a091f.dir/build.make CMakeFiles/cmTC_a091f.dir/build
+gmake.exe[1]: Entering directory 'E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a091f.dir/CMakeCCompilerABI.c.obj
+E:/game-sdk/LLVM/bin/clang-cl.exe  /nologo   -Wall  /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles/cmTC_a091f.dir/CMakeCCompilerABI.c.obj /FdCMakeFiles/cmTC_a091f.dir/ -c -- "D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCCompilerABI.c"
+In file included from D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCCompilerABI.c:9:
+D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCompilerABI.h(4,12): warning: no previous extern declaration for non-static variable 'info_sizeof_dptr' [-Wmissing-variable-declarations]
+const char info_sizeof_dptr[] = {
+           ^
+D:/Program Files/CMake/share/cmake-3.21/Modules/CMakeCompilerABI.h(4,7): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+const char info_sizeof_dptr[] = {
+      ^
+1 warning generated.
+Linking C executable cmTC_a091f.exe
+"D:/Program Files/CMake/bin/cmake.exe" -E vs_link_exe --intdir=CMakeFiles/cmTC_a091f.dir --rc=E:/game-sdk/LLVM/bin/llvm-rc.exe --mt=CMAKE_MT-NOTFOUND --manifests -- E:/game-sdk/LLVM/bin/lld-link.exe /nologo @CMakeFiles/cmTC_a091f.dir/objects1.rsp  /out:cmTC_a091f.exe /implib:cmTC_a091f.lib /pdb:E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp/cmTC_a091f.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console 
+LINK Pass 1: command "E:/game-sdk/LLVM/bin/lld-link.exe /nologo @CMakeFiles/cmTC_a091f.dir/objects1.rsp /out:cmTC_a091f.exe /implib:cmTC_a091f.lib /pdb:E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp/cmTC_a091f.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console /MANIFEST /MANIFESTFILE:CMakeFiles/cmTC_a091f.dir/intermediate.manifest CMakeFiles/cmTC_a091f.dir/manifest.res" failed (exit code 1) with the following output:
+lld-link: error: could not open 'msvcrtd.lib': no such file or directory
+lld-link: error: could not open 'oldnames.lib': no such file or directory
+CMakeFiles/cmTC_a091f.dir/build.make:98: recipe for target 'cmTC_a091f.exe' failed
+gmake.exe[1]: *** [cmTC_a091f.exe] Error -1
+gmake.exe[1]: Leaving directory 'E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_a091f/fast' failed
+gmake.exe: *** [cmTC_a091f/fast] Error 2
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Strawberry/c/bin/gmake.exe -f Makefile cmTC_59b5b/fast && C:/Strawberry/c/bin/gmake.exe  -f CMakeFiles/cmTC_59b5b.dir/build.make CMakeFiles/cmTC_59b5b.dir/build
+gmake.exe[1]: Entering directory 'E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_59b5b.dir/testCCompiler.c.obj
+E:/game-sdk/LLVM/bin/clang-cl.exe  /nologo   -Wall  /MDd /Zi /Ob0 /Od /RTC1 /FoCMakeFiles/cmTC_59b5b.dir/testCCompiler.c.obj /FdCMakeFiles/cmTC_59b5b.dir/ -c -- E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_59b5b.exe
+"D:/Program Files/CMake/bin/cmake.exe" -E vs_link_exe --intdir=CMakeFiles/cmTC_59b5b.dir --rc=E:/game-sdk/LLVM/bin/llvm-rc.exe --mt=CMAKE_MT-NOTFOUND --manifests -- E:/game-sdk/LLVM/bin/lld-link.exe /nologo @CMakeFiles/cmTC_59b5b.dir/objects1.rsp  /out:cmTC_59b5b.exe /implib:cmTC_59b5b.lib /pdb:E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp/cmTC_59b5b.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+LINK Pass 1: command "E:/game-sdk/LLVM/bin/lld-link.exe /nologo @CMakeFiles/cmTC_59b5b.dir/objects1.rsp /out:cmTC_59b5b.exe /implib:cmTC_59b5b.lib /pdb:E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp/cmTC_59b5b.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles/cmTC_59b5b.dir/intermediate.manifest CMakeFiles/cmTC_59b5b.dir/manifest.res" failed (exit code 1) with the following output:
+lld-link: error: could not open 'kernel32.lib': no such file or directory
+lld-link: error: could not open 'user32.lib': no such file or directory
+lld-link: error: could not open 'gdi32.lib': no such file or directory
+lld-link: error: could not open 'winspool.lib': no such file or directory
+lld-link: error: could not open 'shell32.lib': no such file or directory
+lld-link: error: could not open 'ole32.lib': no such file or directory
+lld-link: error: could not open 'oleaut32.lib': no such file or directory
+lld-link: error: could not open 'uuid.lib': no such file or directory
+lld-link: error: could not open 'comdlg32.lib': no such file or directory
+lld-link: error: could not open 'advapi32.lib': no such file or directory
+lld-link: error: could not open 'msvcrtd.lib': no such file or directory
+lld-link: error: could not open 'oldnames.lib': no such file or directory
+CMakeFiles/cmTC_59b5b.dir/build.make:98: recipe for target 'cmTC_59b5b.exe' failed
+gmake.exe[1]: *** [cmTC_59b5b.exe] Error -1
+gmake.exe[1]: Leaving directory 'E:/game-sdk/SOURCE/game-engine-study-0001/build2/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_59b5b/fast' failed
+gmake.exe: *** [cmTC_59b5b/fast] Error 2
+
+
+
